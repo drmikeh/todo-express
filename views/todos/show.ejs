@@ -1,12 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>TODOs</title>
-  </head>
+<head>
+  <% include ../partials/head %>
+</head>
 
-  <body>
-    <h1>TODO <%= todo._id %></h1>
-    <h3><b>Title:</b><%= todo.title %></h3>
-    <h3><b>Completed:</b><%= todo.completed %></h3>
-  </body>
+<body class="container-fluid">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div>
+      <h3>SHOW</h3>
+      <p><b>Title: </b><%= todo.title %></p>
+      <p><b>ID: </b><%= todo._id %></p>
+      <p><b>Completed: </b><%= todo.completed %></p>
+    </div>
+    <a href="/todos" class="btn btn-primary">Back</a>
+    <a href="/todos/<%= todo._id %>/edit" class="btn btn-danger">Edit</a>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
 </html>

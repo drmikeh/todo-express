@@ -1,15 +1,32 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>TODOs</title>
+    <% include ../partials/head %>
   </head>
 
-  <body>
-    <h1>TODOs:</h1>
+  <body class="container-fluid">
+    <header>
+      <% include ../partials/header %>
+    </header>
 
-    <% todos.forEach(function(todo) { %>
-      <div><a href="/todos/<%= todo._id %>"><%= todo.title + ' - ' + todo.completed %></a></div>
-    <% }) %>
+    <main>
+      <div>
+        <h1>TODOs:</h1>
 
+        <% todos.forEach(function(todo) { %>
+        <h4>
+          <form method="POST" action="/todos/<%= todo._id %>?_method=DELETE">
+            <a href="/todos/<%= todo._id %>"><%= todo.title + ' - ' + todo.completed %></a>
+            <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+          </form>
+        </h4>
+        <% }) %>
+      </div>
+      <a href="/todos/new" class="btn btn-primary">New</a>
+    </main>
+
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
   </body>
 </html>
