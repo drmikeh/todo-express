@@ -1,4 +1,4 @@
-# Simple TODO App in Express and Mongoose
+# Simple TODO app in Express and MongoDB with Mongoose
 
 Technologies:
 
