@@ -68,9 +68,8 @@ router.put('/:id', function(req, res, next) {
     else {
       todo.title = req.body.title;
       todo.completed = req.body.completed ? true : false;
-      todo._id = 'blah';
       todo.save(function(err) {
-        // if (err) return next(err);
+        if (err) return next(err);
         res.redirect('/todos');
       });
     }

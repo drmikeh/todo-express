@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 
-
 // Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
