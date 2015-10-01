@@ -88,5 +88,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+console.log('Running in %s mode', app.get('env'));
 
 module.exports = app;
