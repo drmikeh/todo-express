@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
+
 // Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -51,6 +55,30 @@ app.use(methodOverride(function(req, res) {
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+/*
+app.use(function(req, res, next) {
+  var message = req.flash();
+  console.log('flash message:', message);
+  res.locals = {
+    message: message
+  };
+  next();
+});
+*/
+
+require('./config/passport/passport')(passport);
+
+// This middleware will allow us to use the current user in the layout
+app.use(function (req, res, next) {
+  global.currentUser = req.user;
+  next();
+});
 
 app.use('/', routes);
 app.use('/users', users);
