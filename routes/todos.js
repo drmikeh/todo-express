@@ -20,7 +20,7 @@ var authenticate = function(req, res, next) {
 
 // INDEX
 router.get('/', authenticate, function(req, res, next) {
-  console.log('TODOS:index');
+  console.log('TODOS:index: req.session=', req.session);
   var todos = global.currentUser.todos;
   res.render('todos/index', { todos: todos, message: req.flash() })
 });

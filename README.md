@@ -13,5 +13,3 @@
 * Create a TodosController
 * Add a Bootstrap Theme
 * Use Bower to install Bootstrap into the project
-* Add user security with Passport
-
